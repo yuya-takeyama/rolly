@@ -8,6 +8,8 @@
  * file that was distributed with this source code.
  */
 
+require_once 'Rolly/ActiveIf.php';
+
 /**
  * Collection of Rolly_ActiveIf
  *
