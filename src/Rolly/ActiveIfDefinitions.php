@@ -23,8 +23,13 @@ class Rolly_ActiveIfDefinitions implements ArrayAccess
             throw new RuntimeException(
                 sprintf('ActiveIf definition named "%s" is defined already', $key)
             );
+        } else if (!is_callable($value)) {
+            throw new InvalidArgumentException('Callback should be callable');
         }
-        $this->callbacks[$key] = $value;
+        $this->callbacks[$key] = new Rolly_ActiveIf(array(
+            'definitions' => $this,
+            'callback'    => $value,
+        ));
     }
 
     public function offsetGet($key)
