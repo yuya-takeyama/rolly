@@ -50,6 +50,11 @@ class Rolly_Facade
         }
     }
 
+    public function isUnitActive($unitName)
+    {
+        return $this->getUnit($unitName)->isActive();
+    }
+
     private function loadUnit($name)
     {
         require_once $this->config['units_dir'] . DIRECTORY_SEPARATOR .
@@ -61,7 +66,7 @@ class Rolly_Facade
         ));
     }
 
-    private getClassSeparator()
+    private function getClassSeparator()
     {
         return isset($this->config['class_separator']) ? $this->config['class_separator'] : '\\';
     }
