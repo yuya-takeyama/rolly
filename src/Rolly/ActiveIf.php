@@ -38,6 +38,6 @@ class Rolly_ActiveIf
      */
     public function isActive()
     {
-        return call_user_func($this->callback);
+        return call_user_func($this->callback, $this->definitions);
     }
 }

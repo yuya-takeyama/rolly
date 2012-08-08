@@ -47,4 +47,17 @@ class Rolly_Tests_ActiveIfDefinitionsTest extends PHPUnit_Framework_TestCase
         $this->definitions['foo'] = create_function('', 'return true;');
         $this->definitions['foo'] = create_function('', 'return true;');
     }
+
+    /**
+     * @test
+     */
+    public function internal_ActiveIf_object_can_call_the_other_callbacks_by_its_name()
+    {
+        $this->definitions['foo'] = create_function('', 'return true;');
+        $this->definitions['bar'] = create_function(
+            '$definitions',
+            'return $definitions["foo"]->isActive();'
+        );
+        $this->assertTrue($this->definitions['bar']->isActive());
+    }
 }
