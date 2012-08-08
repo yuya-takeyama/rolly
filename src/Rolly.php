@@ -13,6 +13,7 @@ require_once dirname(__FILE__) . '/Rolly/ActiveIf.php';
 require_once dirname(__FILE__) . '/Rolly/ActiveIfDefinitions.php';
 require_once dirname(__FILE__) . '/Rolly/UnitAbstract.php';
 require_once dirname(__FILE__) . '/Rolly/UnitInterface.php';
+require_once dirname(__FILE__) . '/Rolly/Invoker.php';
 
 class Rolly
 {

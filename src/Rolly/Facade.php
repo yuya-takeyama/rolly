@@ -9,6 +9,7 @@
  */
 
 require_once dirname(__FILE__) . '/ActiveIfDefinitions.php';
+require_once dirname(__FILE__) . '/Invoker.php';
 
 /**
  * Facade for Rolly.
@@ -62,9 +63,9 @@ class Rolly_Facade
             $name . DIRECTORY_SEPARATOR . "Initializer.php";
         $klass = $this->config['unit_class_prefix'] . $this->getClassSeparator() .
             $name . $this->getClassSeparator() . 'Initializer';
-        $this->units[$name] = new $klass(array(
+        $this->units[$name] = new Rolly_Invoker(new $klass(array(
             'definitions' => $this->definitions,
-        ));
+        )));
     }
 
     private function getClassSeparator()
