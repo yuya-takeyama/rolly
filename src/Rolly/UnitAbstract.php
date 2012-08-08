@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-require_once 'Rolly/UnitInterface.php';
+require_once dirname(__FILE__) . '/UnitInterface.php';
 
 /**
  * Abstract class off Rolly's feature unit.

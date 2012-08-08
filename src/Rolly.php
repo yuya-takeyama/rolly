@@ -8,11 +8,11 @@
  * file that was distributed with this source code.
  */
 
-require_once 'Rolly/Facade.php';
-require_once 'Rolly/ActiveIf.php';
-require_once 'Rolly/ActiveIfDefinitions.php';
-require_once 'Rolly/UnitAbstract.php';
-require_once 'Rolly/UnitInterface.php';
+require_once dirname(__FILE__) . '/Rolly/Facade.php';
+require_once dirname(__FILE__) . '/Rolly/ActiveIf.php';
+require_once dirname(__FILE__) . '/Rolly/ActiveIfDefinitions.php';
+require_once dirname(__FILE__) . '/Rolly/UnitAbstract.php';
+require_once dirname(__FILE__) . '/Rolly/UnitInterface.php';
 
 class Rolly
 {

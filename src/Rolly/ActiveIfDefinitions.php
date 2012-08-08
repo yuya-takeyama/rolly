@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-require_once 'Rolly/ActiveIf.php';
+require_once dirname(__FILE__) . '/ActiveIf.php';
 
 /**
  * Collection of Rolly_ActiveIf
