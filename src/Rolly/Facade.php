@@ -16,7 +16,7 @@ require_once dirname(__FILE__) . '/Invoker.php';
  *
  * @author Yuya Takeyama
  */
-class Rolly_Facade
+class Rolly_Facade implements ArrayAccess
 {
     private $definitions;
 
@@ -36,20 +36,35 @@ class Rolly_Facade
         $this->units  = array();
     }
 
+    public function offsetGet($key)
+    {
+        return $this->getUnit($key);
+    }
+
+    public function offsetSet($key, $value)
+    {
+        throw new BadMethodCallException('Operation not allowed');
+    }
+
+    public function offsetExists($key)
+    {
+        if (! array_key_exists($key, $this->units)) {
+            $this->loadUnit($key);
+        }
+        return array_key_exists($key, $this->units);
+    }
+
+    public function offsetUnset($key)
+    {
+        throw new BadMethodCallException('Operation not allowed');
+    }
+
     public function getUnit($name)
     {
         if (! array_key_exists($name, $this->units)) {
             $this->loadUnit($name);
         }
         return $this->units[$name];
-    }
-
-    public function invoke($unitName, $method)
-    {
-        $unit = $this->getUnit($unitName);
-        if ($unit->isActive()) {
-            return call_user_func(array($unit, $method));
-        }
     }
 
     public function isUnitActive($unitName)
