@@ -26,12 +26,13 @@ class Rolly_Facade
      */
     private $units;
 
-    public function __construct()
+    public function __construct(array $params = array())
     {
         $this->definitions = isset($params['definitions']) ?
             $params['definitions'] :
             new Rolly_ActiveIfDefinitions;
         $this->config = $params['config'];
+        $this->units  = array();
     }
 
     public function getUnit($name)
@@ -59,7 +60,7 @@ class Rolly_Facade
     {
         require_once $this->config['units_dir'] . DIRECTORY_SEPARATOR .
             $name . DIRECTORY_SEPARATOR . "Initializer.php";
-        $klass = $this->config['unit_clsas_prefix'] . $this->getClassSeparator() .
+        $klass = $this->config['unit_class_prefix'] . $this->getClassSeparator() .
             $name . $this->getClassSeparator() . 'Initializer';
         $this->units[$name] = new $klass(array(
             'definitions' => $this->definitions,
